@@ -21,7 +21,7 @@ public class UIJuiseElment : MonoBehaviour
 
     void popUp()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(0.8f, 0.8f, 0), 0.05f);
+        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.5f, 1.5f, 0), 0.05f);
         transform.position = Vector3.Lerp(transform.position, p.position, 0.05f);
     }
 }

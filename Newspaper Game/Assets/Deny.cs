@@ -16,9 +16,10 @@ public class Deny : MonoBehaviour
         else
             transform.localScale = Vector3.one;
     }
-    public void PressedIt()
+    public void PressedIt(GameObject idk)
     {
         print(" PRESS IT");
         Instantiate(DenyImage, transform.position, transform.rotation, DenyParent);
+        Destroy(idk);
     }
 }
