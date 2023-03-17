@@ -9,6 +9,7 @@ public class Patiant : MonoBehaviour
     int randomSeat;
 
     public GameObject[] seats;
+    public GameObject[] takenSeats;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,4 +39,11 @@ public class Patiant : MonoBehaviour
 
         print(seats[randomSeat].name);
     }
+    public Vector3 getSeat()
+    {
+        int randomSeatIndex = Random.Range(0, seats.Length);
+        return seats[randomSeatIndex].transform.position;
+        
+    }
+
 }
