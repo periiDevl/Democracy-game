@@ -7,6 +7,7 @@ public class Deny : MonoBehaviour
 {
     public GameObject DenyImage;
     public Transform DenyParent;
+    public RectTransform[] Colliders;
     void Update()
     {
         transform.position = Input.mousePosition;
@@ -14,8 +15,10 @@ public class Deny : MonoBehaviour
             transform.localScale = Vector3.one * 0.9f;
         else
             transform.localScale = Vector3.one;
-
-        if (Input.GetMouseButtonDown(0))
-            Instantiate(DenyImage, transform.position, transform.rotation, DenyParent);
+    }
+    public void PressedIt()
+    {
+        print(" PRESS IT");
+        Instantiate(DenyImage, transform.position, transform.rotation, DenyParent);
     }
 }
