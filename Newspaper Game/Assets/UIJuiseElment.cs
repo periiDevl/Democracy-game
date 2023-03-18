@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class UIJuiseElment : MonoBehaviour
 {
-    public Transform p;
+    public Vector3 startPos, origin, wantedScale;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         transform.localScale = new Vector3(0, 0, 0);
     }
@@ -21,7 +21,7 @@ public class UIJuiseElment : MonoBehaviour
 
     void popUp()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, new Vector3(1.5f, 1.5f, 0), 0.05f);
-        transform.position = Vector3.Lerp(transform.position, p.position, 0.05f);
+        transform.localScale = Vector3.Lerp(transform.localScale, wantedScale, 3 * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, origin, 3 * Time.deltaTime);
     }
 }
