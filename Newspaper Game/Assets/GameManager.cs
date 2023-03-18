@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public List<Sprite> pages;
     List<Vector2[]> StampResults;
     List<Sprite> pagesResults;
+
     void Awake()
     {
         StampResults = new List<Vector2[]>();
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
 
         // remove page from the avialable pages list
         pages.Remove(s);
-
+        if (pages.Count <= 0) return;
 
         Vector2[] allPos = new Vector2[page.transform.childCount];
         for (int i = 0; i < allPos.Length; i++) {

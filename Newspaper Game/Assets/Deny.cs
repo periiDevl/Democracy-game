@@ -2,19 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Deny : MonoBehaviour
 {
 
+    public GameObject ApproveImage;
     public GameObject DenyImage;
     public Transform DenyParent;
     public bool isHolding;
     public Collider2D[] options;
     public GameManager gm;
+    public int denyAmount = 3;
+    public TMP_Text text;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        text.text = denyAmount.ToString();
+
+        if (ApproveImage.GetComponent<Collider2D>().OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition)) && Input.GetKeyDown(KeyCode.Mouse0))
+        {
             gm.UpdatePage();
+            denyAmount = 3;
+        }
+
+        ApproveImage.transform.position = new Vector2(ApproveImage.transform.position.x, ApproveImage.transform.position.y + Mathf.Sin(Time.time * 10) / 80);
 
         if (isHolding)
             transform.position = Camera.main.ScreenToWorldPoint(Input.mousePosition) + Vector3.forward;
@@ -35,7 +45,11 @@ public class Deny : MonoBehaviour
     }
     public void UsedStamp()
     {
-        Instantiate(DenyImage, transform.position, transform.rotation, DenyParent);
+        if (denyAmount > 0 )
+        {
+            Instantiate(DenyImage, transform.position, transform.rotation, DenyParent);
+            denyAmount--;
+        }
 
     }
     public void ChangeHoldState() {
